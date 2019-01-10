@@ -10,6 +10,7 @@ import com.pearson.uploadresumejar.endpoints.outbound.UpdateResumeEndpoint;
 import com.pearson.uploadresumejar.utils.CsvFileReaderWriter;
 import com.pearson.uploadresumejar.utils.DirScanner;
 import com.pearson.uploadresumejar.utils.Exceptions.*;
+import com.pearson.uploadresumejar.utils.FileConetntDecoder;
 import org.apache.http.entity.StringEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

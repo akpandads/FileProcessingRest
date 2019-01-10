@@ -2,7 +2,6 @@ package com.pearson.uploadresumejar.utils;
 
 import com.pearson.uploadresumejar.domain.applications.ApplicationDomain;
 import com.pearson.uploadresumejar.domain.applications.FailedPutRequests;
-import com.pearson.uploadresumejar.domain.interview.InterviewResponseDomain;
 import com.pearson.uploadresumejar.utils.Exceptions.CSVFileWriteException;
 import com.pearson.uploadresumejar.utils.Exceptions.EmptyCSVFileException;
 import com.pearson.uploadresumejar.utils.Exceptions.InvalidCSVFileException;
@@ -14,8 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -40,7 +37,7 @@ public class CsvFileReaderWriter {
                 applicationDomain.setTaleoCandidateEmail(csvRecord.get(0));
                 applicationDomain.setRequisitionNumber(csvRecord.get(1));
                 applicationDomain.setFileName(csvRecord.get(2));
-                applicationDomain.setFileContent(csvRecord.get(3));
+                applicationDomain.setFileContentOriginal(csvRecord.get(3));
                 applicationDomainList.add(applicationDomain);
             }
 

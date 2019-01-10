@@ -7,10 +7,9 @@ public class ApplicationDomain {
     private String taleoCandidateEmail;
     private String requisitionNumber;
     private String fileName;
-    private String fileContent;
+    private String fileContentOriginal;
     private List<String> positionId = new ArrayList<>();
     private List<String> interviewId = new ArrayList<>();
-
     public String getTaleoCandidateEmail() {
         return taleoCandidateEmail;
     }
@@ -35,12 +34,12 @@ public class ApplicationDomain {
         this.fileName = fileName;
     }
 
-    public String getFileContent() {
-        return fileContent;
+    public String getFileContentOriginal() {
+        return fileContentOriginal;
     }
 
-    public void setFileContent(String fileContent) {
-        this.fileContent = fileContent;
+    public void setFileContentOriginal(String fileContentOriginal) {
+        this.fileContentOriginal = fileContentOriginal;
     }
 
     public List<String> getPositionId() {

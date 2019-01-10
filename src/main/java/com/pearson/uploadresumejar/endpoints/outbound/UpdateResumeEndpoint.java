@@ -6,6 +6,7 @@ import com.pearson.uploadresumejar.domain.applications.FailedPutRequests;
 import com.pearson.uploadresumejar.domain.applications.putresumedomain.ResumeDetails;
 import com.pearson.uploadresumejar.domain.applications.putresumedomain.ResumeUploadPutDomain;
 import com.pearson.uploadresumejar.domain.session.GetInterviewRequestProperites;
+import com.pearson.uploadresumejar.utils.FileConetntDecoder;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPut;
@@ -13,6 +14,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ public class UpdateResumeEndpoint {
 
     private static final Logger logger = LoggerFactory.getLogger(UpdateResumeEndpoint.class);
 
+    @Autowired
+    public FileConetntDecoder fileConetntDecoder;
+
     public List<FailedPutRequests> updateResumes(List<ApplicationDomain> applicationDomainList, String uploadResumeUrl, GetInterviewRequestProperites getInterviewRequestProperites){
         List<FailedPutRequests> failedPutRequestsList = new ArrayList<>();
         for(ApplicationDomain applicationDomain:applicationDomainList){
@@ -32,7 +37,8 @@ public class UpdateResumeEndpoint {
 
                 ResumeDetails resumeDetails = new ResumeDetails();
                 resumeDetails.setFilename(applicationDomain.getFileName());
-                resumeDetails.setContent(applicationDomain.getFileContent());
+                String decodedString = fileConetntDecoder.decodeString(applicationDomain.getFileContentOriginal());
+                resumeDetails.setContent(decodedString);
 
                 ResumeUploadPutDomain resumeUploadPutDomain = new ResumeUploadPutDomain();
                 resumeUploadPutDomain.setResumeDetails(resumeDetails);
